@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model Prediction</title>
+  <style>
+    /* Color palette: 60% White, 10% Black, 30% #0077B5 */
+    :root {
+      --bg-color: #FFFFFF;
+      --text-color: #000000;
+      --accent-color: #0077B5;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+      color: var(--accent-color);
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--accent-color);
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .output {
+      margin-top: 1.5rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Model Prediction</h1>
+    <form action="/predict" method="post">
+      <input type="text" name="feature" placeholder="Enter weight" required />
+      <button type="submit" value = 'Predict'>Submit</button>
+    </form>
+    {% if prediction_text %}
+      <div class="output">{{ prediction_text }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
